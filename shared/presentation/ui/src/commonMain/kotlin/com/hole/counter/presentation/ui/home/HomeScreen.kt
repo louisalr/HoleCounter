@@ -5,10 +5,13 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import com.hole.counter.presentation.ui.home.navigator.HomeComponent
+import com.hole.counter.viewmodels.home.HomeViewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun HomeScreen(
-    component: HomeComponent
+    component: HomeComponent,
+    homeViewModel: HomeViewModel = koinViewModel()
 ){
     Scaffold {
         Column {

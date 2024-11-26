@@ -7,11 +7,14 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.hole.counter.presentation.ui.leaderboard.navigator.LeaderComponent
+import com.hole.counter.viewmodels.leaderboard.LeaderBoardViewModel
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun LeaderBoardScreen(
     component: LeaderComponent,
+    leaderBoardViewModel: LeaderBoardViewModel = koinViewModel()
     //items: List<LeaderBoardData>
 ){
     Scaffold {
