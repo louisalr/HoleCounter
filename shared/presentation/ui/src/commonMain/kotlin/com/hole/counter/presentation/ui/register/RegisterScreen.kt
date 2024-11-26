@@ -6,10 +6,13 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import com.hole.counter.presentation.ui.login.navigator.LoginComponent
 import com.hole.counter.presentation.ui.register.navigator.RegisterComponent
+import com.hole.counter.viewmodels.register.RegisterViewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun RegisterScreen(
-    component: RegisterComponent
+    component: RegisterComponent,
+    registerViewModel: RegisterViewModel = koinViewModel()
 ){
     Scaffold {
         Column {
