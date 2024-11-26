@@ -44,4 +44,5 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     debugImplementation(libs.compose.ui.tooling)
     implementation(project(":shared:presentation:ui"))
+    implementation(libs.koin.android)
 }

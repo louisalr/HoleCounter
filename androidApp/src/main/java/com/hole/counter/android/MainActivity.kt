@@ -10,13 +10,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.hole.counter.Greeting
 import com.hole.counter.presentation.ui.MainAndroid
+import org.koin.android.ext.koin.androidContext
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MyApplicationTheme {
-                MainAndroid()
+                MainAndroid(appDeclaration = { androidContext(this@MainActivity)} )
             }
         }
     }
