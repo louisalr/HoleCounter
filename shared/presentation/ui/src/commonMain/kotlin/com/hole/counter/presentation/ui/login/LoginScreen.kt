@@ -1,18 +1,18 @@
-package com.hole.counter.presentation.ui.home
+package com.hole.counter.presentation.ui.login
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import com.hole.counter.presentation.ui.home.navigator.HomeComponent
+import com.hole.counter.presentation.ui.login.navigator.LoginComponent
 
 @Composable
-fun HomeScreen(
-    component: HomeComponent
+fun LoginScreen(
+    component: LoginComponent
 ){
     Scaffold {
         Column {
-            Text("Test")
+            Text("Login Screen")
         }
     }
 }
