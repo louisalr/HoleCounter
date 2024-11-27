@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.ktorfit)
 }
 
 kotlin {
@@ -18,26 +19,26 @@ kotlin {
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "viewmodels"
+            baseName = "http"
             isStatic = true
         }
     }
 
     sourceSets {
         commonMain.dependencies {
-            //put your multiplatform dependencies here
             api(libs.koin.core)
-            implementation(libs.koin.compose)
-            implementation(libs.koin.composeVM)
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktorfit.lib)
 
-            implementation(project(":shared:core:http"))
-            implementation(project(":shared:data:authentication"))
-            implementation(project(":shared:domain:authentication"))
+            implementation("io.ktor:ktor-client-content-negotiation:3.0.0") // Ajouté pour la négociation de contenu
+            implementation("io.ktor:ktor-serialization-kotlinx-json:3.0.0") // Pour la sérialisation JSON
         }
-
         androidMain.dependencies {
-            implementation(libs.koin.android)
-            implementation(libs.koin.androidx.compose)
+            implementation(libs.ktor.client.okhttp)
+
+        }
+        iosMain.dependencies {
+            implementation(libs.ktor.client.darwin)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -46,7 +47,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.hole.counter.viewmodels"
+    namespace = "com.hole.counter.core.http"
     compileSdk = 34
     defaultConfig {
         minSdk = 24

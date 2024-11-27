@@ -26,6 +26,8 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(libs.koin.core)
+
+            implementation(project(":shared:data:authentication"))
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
