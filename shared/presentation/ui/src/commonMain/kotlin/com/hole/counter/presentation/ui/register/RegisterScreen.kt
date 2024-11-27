@@ -1,6 +1,7 @@
 package com.hole.counter.presentation.ui.register
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material.Button
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -16,6 +17,12 @@ fun RegisterScreen(
     Scaffold {
         Column {
             Text("Register Screen")
+
+            Button(
+                onClick = { component.onRegister()}
+            ) {
+                Text("This is a test")
+            }
         }
     }
 }

@@ -12,6 +12,7 @@ import com.arkivanov.decompose.extensions.compose.stack.animation.fade
 import com.arkivanov.decompose.extensions.compose.stack.animation.plus
 import com.arkivanov.decompose.extensions.compose.stack.animation.scale
 import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
+import com.hole.counter.presentation.ui.addtarget.AddTargetScreen
 import com.hole.counter.presentation.ui.home.HomeScreen
 import com.hole.counter.presentation.ui.leaderboard.LeaderBoardScreen
 import com.hole.counter.presentation.ui.login.LoginScreen
@@ -36,6 +37,7 @@ fun RootContent(
                 is Child.Home -> HomeScreen(component = instance.component)
                 is Child.Login -> LoginScreen(component = instance.component)
                 is Child.Register -> RegisterScreen(component = instance.component)
+                is Child.AddTarget -> AddTargetScreen(component = instance.component)
                 is Child.LeaderBoard -> LeaderBoardScreen(component = instance.component)
             }
         }

@@ -5,10 +5,10 @@ import com.hole.counter.presentation.ui.home.navigator.HomeComponent
 
 class DefaultRegisterComponent(
     componentContext: ComponentContext,
-    private val onRegisterClickedPressed: () -> Unit,
+    private val onRegisterNavigation: () -> Unit,
 ) : RegisterComponent, ComponentContext by componentContext {
 
-    override fun onRegisterSuccess() {
-        TODO("Not yet implemented")
+    override fun onRegister() {
+        onRegisterNavigation()
     }
 }
