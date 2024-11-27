@@ -29,7 +29,7 @@ class DefaultRootComponent(
         childStack(
             source = navigation,
             serializer = Config.serializer(),
-            initialConfiguration = Config.Home,
+            initialConfiguration = Config.Register,
             handleBackButton = true,
             childFactory = ::child,
         )

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
@@ -25,7 +26,10 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            //put your multiplatform dependencies here
+            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+
+            api(libs.koin.core)
+            implementation(libs.ktorfit.lib)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
