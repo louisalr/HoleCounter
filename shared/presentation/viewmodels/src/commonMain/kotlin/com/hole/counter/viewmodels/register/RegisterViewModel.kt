@@ -21,4 +21,10 @@ class RegisterViewModel(
             registerUseCase()
         }
     }
+
+    fun register(){
+        viewModelScope.launch {
+            registerUseCase()
+        }
+    }
 }

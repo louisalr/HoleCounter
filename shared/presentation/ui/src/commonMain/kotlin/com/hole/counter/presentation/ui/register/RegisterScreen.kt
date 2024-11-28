@@ -1,10 +1,15 @@
 package com.hole.counter.presentation.ui.register
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material.Button
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import com.hole.counter.presentation.ui.commons.components.CardComponent
 import com.hole.counter.presentation.ui.register.navigator.RegisterComponent
 import com.hole.counter.viewmodels.register.RegisterViewModel
 import org.koin.compose.viewmodel.koinViewModel
@@ -14,15 +19,21 @@ fun RegisterScreen(
     component: RegisterComponent,
     registerViewModel: RegisterViewModel = koinViewModel()
 ){
-    Scaffold {
-        Column {
-            Text("Register Screen")
+    val viewModel by registerViewModel.viewState.collectAsState()
 
-            Button(
-                onClick = { component.onRegister()}
-            ) {
-                Text("This is a test")
-            }
+    Scaffold {
+        Column(
+            modifier = Modifier
+                .fillMaxSize(), // Occupe tout l'espace disponible
+            verticalArrangement = Arrangement.Center, // Centre verticalement
+            horizontalAlignment = Alignment.CenterHorizontally // Centre horizontalement
+        )  {
+
+            CardComponent(
+                onRegisterClicked = {
+                    component.onRegister()
+                }
+            )
         }
     }
 }
