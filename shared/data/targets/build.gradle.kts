@@ -18,27 +18,15 @@ kotlin {
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "viewmodels"
+            baseName = "targets"
             isStatic = true
         }
     }
 
     sourceSets {
         commonMain.dependencies {
-            //put your multiplatform dependencies here
             api(libs.koin.core)
-            implementation(libs.koin.compose)
-            implementation(libs.koin.composeVM)
 
-            implementation(project(":shared:core:http"))
-            implementation(project(":shared:data:authentication"))
-            implementation(project(":shared:data:targets"))
-            implementation(project(":shared:domain:authentication"))
-        }
-
-        androidMain.dependencies {
-            implementation(libs.koin.android)
-            implementation(libs.koin.androidx.compose)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -47,7 +35,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.hole.counter.viewmodels"
+    namespace = "com.hole.counter.domain.targets"
     compileSdk = 34
     defaultConfig {
         minSdk = 24

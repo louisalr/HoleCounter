@@ -9,6 +9,7 @@ import com.hole.counter.viewmodels.register.RegisterViewModel
 import com.hole.counter.viewmodels.login.LoginViewModel
 import com.hole.counter.viewmodels.leaderboard.LeaderBoardViewModel
 import com.hole.counter.domain.authentication.di.authDomainModule
+import com.hole.counter.domain.targets.di.targetsRepositoryModule
 
 val viewModelsModule = module {
 
@@ -28,6 +29,7 @@ val viewModelsModule = module {
     includes(httpCoreModule)
 
     includes(authRepositoryModule)
+    includes(targetsRepositoryModule)
     includes(authDomainModule)
 
     factoryOf(::HomeViewModel)

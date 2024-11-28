@@ -6,8 +6,11 @@ import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.popTo
+import com.arkivanov.decompose.router.stack.push
 import com.arkivanov.decompose.router.stack.replaceAll
 import com.arkivanov.decompose.value.Value
+import com.hole.counter.presentation.ui.addtarget.navigator.AddTargetComponent
+import com.hole.counter.presentation.ui.addtarget.navigator.DefaultAddTargetComponent
 import com.hole.counter.presentation.ui.home.navigator.DefaultHomeComponent
 import com.hole.counter.presentation.ui.home.navigator.HomeComponent
 import com.hole.counter.presentation.ui.leaderboard.navigator.DefaultLeaderComponent
@@ -39,31 +42,40 @@ class DefaultRootComponent(
             is Config.Home -> Child.Home(homeComponent(childComponentContext))
             is Config.Login -> Child.Login(loginComponent(childComponentContext))
             is Config.Register -> Child.Register(registerComponent(childComponentContext))
+            is Config.AddTarget -> Child.AddTarget(addTargetComponent(childComponentContext))
             is Config.LeaderBoard -> Child.LeaderBoard(leaderComponent(childComponentContext))
         }
 
     private fun homeComponent(componentContext: ComponentContext): HomeComponent =
         DefaultHomeComponent(
             componentContext = componentContext,
-            onRegisterClickedPressed = {}
+            onLeaderBoardNavigation = {},
+            onAddTargetNavigation = { navigation.push(Config.AddTarget)}
         )
 
     private fun loginComponent(componentContext: ComponentContext): LoginComponent =
         DefaultLoginComponent(
             componentContext = componentContext,
-            onRegisterClickedPressed = { navigation.replaceAll(Config.Home) },
+            onLoginNavigation = { navigation.replaceAll(Config.Home) },
         )
 
     private fun registerComponent(componentContext: ComponentContext): RegisterComponent =
         DefaultRegisterComponent(
             componentContext = componentContext,
-            onRegisterClickedPressed = navigation::pop,
+            onRegisterNavigation = { navigation.replaceAll(Config.Login)}
+        )
+
+    private fun addTargetComponent(componentContext: ComponentContext): AddTargetComponent =
+        DefaultAddTargetComponent(
+            componentContext = componentContext,
+            onLeaderBoardNavigation = {},
+            addNewBoardNavigation = {}
         )
 
     private fun leaderComponent(componentContext: ComponentContext): LeaderComponent =
         DefaultLeaderComponent(
             componentContext = componentContext,
-            onRegisterClickedPressed = {  },
+            onAddTargetClicked = {  },
         )
 
     override fun onBackClicked(toIndex: Int) {
@@ -80,6 +92,9 @@ class DefaultRootComponent(
 
         @Serializable
         data object Home : Config
+
+        @Serializable
+        data object AddTarget : Config
 
         @Serializable
         data object LeaderBoard : Config

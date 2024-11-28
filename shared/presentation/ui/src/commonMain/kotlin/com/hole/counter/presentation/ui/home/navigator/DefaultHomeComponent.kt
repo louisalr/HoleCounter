@@ -4,10 +4,15 @@ import com.arkivanov.decompose.ComponentContext
 
 class DefaultHomeComponent(
     componentContext: ComponentContext,
-    private val onRegisterClickedPressed: () -> Unit,
+    private val onLeaderBoardNavigation: () -> Unit,
+    private val onAddTargetNavigation: () -> Unit,
 ) : HomeComponent, ComponentContext by componentContext {
 
-    override fun onBackNavigation() {
-        TODO("Not yet implemented")
+    override fun onLeaderBoard() {
+        onLeaderBoardNavigation()
+    }
+
+    override fun onAddTarget() {
+        onAddTargetNavigation()
     }
 }
